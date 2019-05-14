@@ -13,12 +13,10 @@ const App = () => {
 		<div>
 			<BrowserRouter>
 				<NavBar/>
-				<div>
 					<Route path="/" exact component={CategoryList} />
 					<Route path="/dashboard" component={Dashboard} />
 					<Route path="/category/:setID" exact component={Category} />
 					<Route path="/category/:setID/set/:setID" component={Set} />
-				</div>
 				<Footer />
 			</BrowserRouter>
 		</div>
