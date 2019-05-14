@@ -15,11 +15,36 @@ const TCGPlayer = axios.create({
 });
 
 class CategoryList extends React.Component {
+    state = {
+        categories: []
+    };
+
+    getCategories = async () => {
+        const response = await TCGPlayer.get('/catalog/categories' );
+        this.setState({ categories: response.data.results });
+    };
+
+    componentDidMount() {
+        this.getCategories()
+    };
+
+    renderCategories = () => {
+        const categories = this.state.categories.map( category => {
+            return (
+                <div key={ category.categoryId} className="col-sm-3 card text-center" style={{margin: '10px', paddingTop: '5px'}}>
+                    <h5>
+                        <Link to={ `/category/${ category.categoryId }`}>{ category.name }</Link>
+                    </h5>
+                </div>
+            )
+        });
+        return categories;
+    };
 
     render(){
         return(
             <div className="container" style={{padding: '20px'}}>
-                This is where the category goes!
+                { this.renderCategories() }
             </div>
         )
     }
