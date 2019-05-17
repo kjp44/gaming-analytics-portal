@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
             return (
                 <div className="col-sm-3" key={`${product.productId} - ${product.subTypeName}`}>
                     <div className="card">
-                        <h5 className={"pl-2"}>
+                        <h5 className={"pl-2 pt-2"}>
                             { product.name } - { product.subTypeName }
                         </h5>
                         <img className="container-fluid p-2"src={product.imageUrl} alt={product.name}/>

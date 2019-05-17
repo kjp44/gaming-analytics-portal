@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import APIRequest from './APIRequest';
 import { addProductToDashboard } from "../actions";
+import {Link} from "react-router-dom";
 
 class Product extends React.Component {
     state = {
@@ -43,12 +44,21 @@ class Product extends React.Component {
                                     <p>Low Price: ${ productType.lowPrice }</p>
                                     <p>Mid Price: ${ productType.midPrice }</p>
                                     <p>High Price: ${ productType.highPrice }</p>
-                                    <button type="button"
-                                            onClick={() => { this.props.addProductToDashboard(product.productId, product.name, productType.subTypeName, productType.lowPrice, productType.midPrice
-                                            , productType.highPrice, product.imageUrl)}}
-                                            className="m-2 btn btn-primary">
-                                        Add To Dashboard
-                                    </button>
+                                    <Link to="/dashboard">
+                                        <button type="button"
+                                                onClick={() => { this.props.addProductToDashboard(product.productId, product.name, productType.subTypeName, productType.lowPrice, productType.midPrice
+                                                , productType.highPrice, product.imageUrl)}}
+                                                className="m-2 btn btn-primary">
+                                            Add To Dashboard
+                                        </button>
+                                    </Link>
+                                </div>
+                            )
+                        } else {
+                            return(
+                                <div className="card pl-3 pt-3 m-1" key={productType.subTypeName}>
+                                    <h4>{ productType.subTypeName }</h4>
+                                    <p>No pricing information available.</p>
                                 </div>
                             )
                         }

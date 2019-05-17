@@ -12,7 +12,7 @@ const TCGPlayer = axios.create({
 const getCategories = async () => {
     const response = await TCGPlayer.get('/catalog/categories', {
         params: {
-            limit: 3,
+            limit: 58,
             sortOrder: 'categoryId'
         }
     } );
