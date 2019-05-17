@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import APIRequest from './APIRequest';
 
-class Category extends React.Component {
+class Product extends React.Component {
     state = {
         productDetails: [],
         productPricing: []
@@ -33,16 +34,17 @@ class Category extends React.Component {
                     </h2>
                     <img className="ml-5"src={product.imageUrl} alt={product.name}/>
                     { this.state.productPricing.map( productType => {
-                        console.log(productType)
-                        return(
-                            <div className="card p-3 m-1" key={productType.subTypeName}>
-                                <h4>{ productType.subTypeName }</h4>
-                                <p>Market Price: ${ productType.marketPrice }</p>
-                                <p>Low Price: ${ productType.lowPrice }</p>
-                                <p>Mid Price: ${ productType.midPrice }</p>
-                                <p>High Price: ${ productType.highPrice }</p>
-                            </div>
-                        )
+                        if (productType.midPrice !== null){
+                            return(
+
+                                <div className="card pl-3 pt-3 m-1" key={productType.subTypeName}>
+                                    <h4>{ productType.subTypeName }</h4>
+                                    <p>Low Price: ${ productType.lowPrice }</p>
+                                    <p>Mid Price: ${ productType.midPrice }</p>
+                                    <p>High Price: ${ productType.highPrice }</p>
+                                </div>
+                            )
+                        }
                     })}
                 </div>
             )
@@ -59,4 +61,4 @@ class Category extends React.Component {
     }
 }
 
-export default Category;
+export default connect()(Product);

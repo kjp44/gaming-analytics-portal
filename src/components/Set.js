@@ -4,7 +4,7 @@ import APIRequest from './APIRequest';
 import {Link} from "react-router-dom";
 
 
-class Category extends React.Component {
+class Set extends React.Component {
     state = {
         products: []
     };
@@ -55,4 +55,4 @@ class Category extends React.Component {
     }
 }
 
-export default Category;
+export default Set;
