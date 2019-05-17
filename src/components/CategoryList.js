@@ -20,12 +20,12 @@ class CategoryList extends React.Component {
     renderCategories = () => {
         const categories = this.state.categories.map( category => {
             return (
-                <div className="col-sm-3">
-                <Link to={ `/category/${ category.categoryId }` } key={ category.categoryId }>
-                    <div key={ category.categoryId} className="card text-center" style={{marginTop: '5px', marginBottom: '5px' }}>
-                        <img src={require(`../images/${ category.categoryId }.jpg`)} style={{ maxHeight: '135px', padding: '5px' }} />
-                    </div>
-                </Link>
+                <div className="col-sm-3" key={ category.categoryId }>
+                    <Link to={ `/category/${ category.categoryId }` }>
+                        <div className="card text-center" style={{marginTop: '5px', marginBottom: '5px' }}>
+                            <img src={require(`../images/${ category.categoryId }.jpg`)} alt={category.name} style={{ maxHeight: '135px', padding: '5px' }} />
+                        </div>
+                    </Link>
                 </div>
             )
         });
@@ -37,7 +37,7 @@ class CategoryList extends React.Component {
         const rows = []
         for(let i = 0; i < categories().length; i += 4){
             rows.push(
-                <div className="row">
+                <div className="row" key={i}>
                     { categories().slice(i, i+4) }
                 </div>
             )

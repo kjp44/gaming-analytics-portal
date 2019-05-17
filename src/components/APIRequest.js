@@ -12,11 +12,46 @@ const TCGPlayer = axios.create({
 const getCategories = async () => {
     const response = await TCGPlayer.get('/catalog/categories', {
         params: {
-            limit: 58
+            limit: 58,
+            sortOrder: 'categoryId'
         }
     } );
 
     return response;
 };
 
-export default {TCGPlayer, getCategories};
+const getSets = async (categoryID) => {
+    const response = await TCGPlayer.get(`/catalog/categories/${ categoryID }/groups`, {
+        params: {
+            limit: 100,
+        }
+    } );
+
+    return response;
+};
+
+const getProducts = async (setID) => {
+    const response = await TCGPlayer.get(`/catalog/products`, {
+        params: {
+            groupId: setID,
+            limit: 100
+        }
+    } );
+
+    return response;
+};
+
+const getProductDetails = async (productID) => {
+    const response = await TCGPlayer.get(`/catalog/products/${ productID }`);
+
+    return response;
+};
+
+const getProductPricing = async (productID) => {
+    const response = await TCGPlayer.get( `/pricing/product/${ productID }`);
+
+    return response;
+}
+
+
+export default {TCGPlayer, getCategories, getSets, getProducts, getProductDetails, getProductPricing};

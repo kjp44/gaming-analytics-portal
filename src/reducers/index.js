@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import React from "react";
 
 const DEFAULT_STATE = {
-    categoryId: 0
+    currentCategoryID: 0,
+    currentSetID: 0,
+    currentProductID: 0,
+    dashboardData: []
 };
 
 const categoryReducer = (state = DEFAULT_STATE, action) => {
