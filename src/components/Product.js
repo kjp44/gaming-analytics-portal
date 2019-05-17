@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import APIRequest from './APIRequest';
+import { addProductToDashboard } from "../actions";
 
 class Product extends React.Component {
     state = {
@@ -42,6 +43,12 @@ class Product extends React.Component {
                                     <p>Low Price: ${ productType.lowPrice }</p>
                                     <p>Mid Price: ${ productType.midPrice }</p>
                                     <p>High Price: ${ productType.highPrice }</p>
+                                    <button type="button"
+                                            onClick={() => { this.props.addProductToDashboard(product.productId, product.name, productType.subTypeName, productType.lowPrice, productType.midPrice
+                                            , productType.highPrice, product.imageUrl)}}
+                                            className="m-2 btn btn-primary">
+                                        Add To Dashboard
+                                    </button>
                                 </div>
                             )
                         }
@@ -61,4 +68,5 @@ class Product extends React.Component {
     }
 }
 
-export default connect()(Product);
+
+export default connect(null, { addProductToDashboard })(Product);

@@ -15,7 +15,7 @@ class Dashboard extends React.Component {
 
         let products = this.sortProductsByPrice().map( product => {
             return (
-                <div className="col-sm-3" key={`${product.name} - ${product.subTypeName}`}>
+                <div className="col-sm-3" key={`${product.productId} - ${product.subTypeName}`}>
                     <div className="card">
                         <h5 className={"pl-2"}>
                             { product.name } - { product.subTypeName }
@@ -27,7 +27,7 @@ class Dashboard extends React.Component {
                             <p>High Price: ${ product.highPrice }</p>
                         </div>
                         <button type="button"
-                                onClick={() => { this.props.removeProductFromDashboard(product.productId)}}
+                                onClick={() => { this.props.removeProductFromDashboard(product.productId, product.subTypeName)}}
                                 className="m-2 btn btn-danger">
                             Remove
                         </button>

@@ -20,7 +20,7 @@ class NavBar extends React.Component {
                                     className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-light" to="dashboard">Dashboard</Link>
+                                <Link className="nav-link text-light" to="/dashboard">Dashboard</Link>
                             </li>
                         </ul>
                     </div>
